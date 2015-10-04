@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.milan.inzaghi09"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 获取准确gsp定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 获取粗略定位权限，网络获取定位时使用 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> <!-- 允许模拟器模拟位置 -->
+    <!-- 在窗体上挂在view的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+	
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.milan.inzaghi09" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.milan.inzaghi09.activity.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.HomeAcitivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.SettingActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.TestActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.SetupOverActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.Setup1Activity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.Setup2Activity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.Setup3Activity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.Setup4Activity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.ContactListActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.AdvancedToolsActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.AddressQueryActivity" >
+        </activity>
+        <activity
+            android:name="com.milan.inzaghi09.activity.ToastLocationActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.BlackNumberActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.AppManagementActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.ProgressManagementActivity" >
+        </activity>
+
+        <receiver android:name="com.milan.inzaghi09.receiver.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.milan.inzaghi09.receiver.SmsReceiver" >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.milan.inzaghi09.service.LocationService" >
+        </service>
+        <service android:name="com.milan.inzaghi09.service.AddressService" >
+        </service>
+        <service android:name="com.milan.inzaghi09.service.BlacklistService" >
+        </service>
+
+        <receiver
+            android:name="com.milan.inzaghi09.receiver.DeviceAdmin"
+            android:description="@string/device_admin_description"
+            android:label="@string/device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+         <uses-library android:name="android.test.runner" />
+    </application>
+
+</manifest>

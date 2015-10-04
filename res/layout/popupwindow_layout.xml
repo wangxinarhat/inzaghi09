@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/popupwindow_bg" >
+
+    <TextView 
+        android:id="@+id/tv_uninstall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卸载"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:drawableTop="@drawable/popupwindow_uninstall"/>
+    <TextView 
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:drawableTop="@drawable/popupwindow_start"/>
+    <TextView 
+        android:id="@+id/tv_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分享"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:drawableTop="@drawable/popupwindow_share"/>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 将属性抽取到样式中 -->
+
+    <TextView
+        style="@style/TitleStyle"
+        android:text="功能列表" />
+
+    <!--
+         <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#7FFF00"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
+        android:text="功能列表"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+    -->
+
+
+    <!-- android:ellipsize="end"添加省略点的所在位置 -->
+    <!-- 想让文字出现跑马灯效果,必须让其获取焦点 -->
+    <!-- android:marqueeRepeatLimit="marquee_forever"一直滚动属性 -->
+    <!-- 自定义控件达到滚动效果(其实就是重新原有的TextView,让其一直能够获取焦点即可) -->
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="春眠不觉晓处处闻啼鸟，夜半钟声到客船，长使英雄泪满襟，"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <GridView
+        android:gravity="center"
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:verticalSpacing="12dp" >
+    </GridView>
+
+</LinearLayout>

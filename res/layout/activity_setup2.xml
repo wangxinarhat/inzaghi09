@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TitleStyle"
+        android:text="2手机卡绑定" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="通过绑定sim卡:\n下次手机重启发现sim卡发生变化就会发送报警短信"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+   
+
+    <com.milan.inzaghi09.view.SettingItemView
+        android:id="@+id/siv_bind_sim"
+        xmlns:inzaghi09="http://schemas.android.com/apk/res/com.milan.inzaghi09"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        inzaghi09:destitle = "点击绑定sim卡"
+        inzaghi09:deson = "sim卡已绑定"
+        inzaghi09:desoff = "sim卡没有绑定"
+        >
+        
+        </com.milan.inzaghi09.view.SettingItemView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+
+     
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible" />
+           <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_online" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bind" />
+
+        <Button
+            android:text="下一步"
+            android:onClick="nextPage"
+            android:drawableRight="@drawable/next"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_button" />
+        <Button
+            android:text="上一步"
+            android:onClick="prePage"
+            android:drawableLeft="@drawable/previous"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_button" />
+    </RelativeLayout>
+
+</LinearLayout>
