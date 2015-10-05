@@ -226,7 +226,7 @@ public class AppManagementActivity extends Activity implements OnClickListener {
 				if (position == 0 || position == customerAppInfoList.size() + 1) {
 					return;
 				} else {
-					if (position < customerAppInfoList.size()) {
+					if (position < customerAppInfoList.size()+1) {
 //						用户应用
 						mAppInfo = customerAppInfoList.get(position - 1);
 					} else {
