@@ -88,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="全选"
+            android:text="设置"
             android:textColor="#000"
             android:textSize="16sp"/>
     </LinearLayout>

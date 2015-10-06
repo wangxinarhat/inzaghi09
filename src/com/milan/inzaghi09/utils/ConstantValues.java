@@ -56,5 +56,16 @@ public class ConstantValues {
 	 */
 	public static final String BLACKLIST_BLOCK_ISOPEN = "blacklist_block_isopen";
 
+	/**
+	 * 存储进程管理界面是否显示系统进程的key
+	 */
+	public static final String IS_SHOW_SYSTEM_PROCESS = "is_show_system_process";
+
+	/**
+	 * 存储快捷方式是否存在的key
+	 */
+	public static final String SHORTCUT_EXIST = "shortcut_exist";
+
+
 }
 

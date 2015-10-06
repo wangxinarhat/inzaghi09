@@ -10,7 +10,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-public class AppInfoLibrary {
+public class AppInfoProvider {
 
 	/**
 	 * 获取app字段信息封装到bean对象，添加至集合返回

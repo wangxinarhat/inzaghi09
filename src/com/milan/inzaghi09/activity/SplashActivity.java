@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,6 +36,8 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.milan.inzaghi09.R;
+import com.milan.inzaghi09.utils.ConstantValues;
+import com.milan.inzaghi09.utils.SpUtil;
 import com.milan.inzaghi09.utils.StreamUtil;
 import com.milan.inzaghi09.utils.ToastUtil;
 
@@ -100,7 +103,35 @@ public class SplashActivity extends Activity {
 
 		// 4初始化数据库
 		initDB("address.db");
+		initDB("commonnum.db");
+		
+//		5生成桌面快捷方式
+		if (!SpUtil.getBoolean(this, ConstantValues.SHORTCUT_EXIST, false)) {
+			initShortCut();
+		}
 
+	}
+
+	/**
+	 * 当Splash界面打开的时候，生成快捷方式
+	 */
+	private void initShortCut() {
+//		匹配桌面应用的广播接收者action，图标，名称，以及点击快捷方式后跳转的activity(注意权限)
+//		1创建意图对象
+		Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+//		2图标
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, 
+				BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+//		3名称
+		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "幸运收割者");
+//		4点击快捷方式后的跳转
+		Intent shortCutIntent = new Intent("android.intent.action.HOME");
+		shortCutIntent.addCategory("android.intent.category.DEFAULT");
+		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortCutIntent);
+		
+//		5发送广播
+		sendBroadcast(intent);
+		SpUtil.putBoolean(this, ConstantValues.SHORTCUT_EXIST, true);
 	}
 
 	/**

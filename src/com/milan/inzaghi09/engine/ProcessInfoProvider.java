@@ -17,7 +17,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class ProgressInfoLibrary {
+public class ProcessInfoProvider {
 	/**
 	 * 获取正在运行的进程总数
 	 * 
@@ -143,6 +143,21 @@ public class ProgressInfoLibrary {
 	public static void killProgress(Context ctx,ProgressInfo progressInfo) {
 		ActivityManager am = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
 		am.killBackgroundProcesses(progressInfo.packageName);
+	}
+
+	/**杀死除本应用以外的可杀死进程
+	 * @param ctx 上下文
+	 */
+	public static void killAll(Context ctx) {
+		ActivityManager am = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
+		List<RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
+		for (RunningAppProcessInfo info : runningAppProcesses) {
+			if (info.processName.equals(ctx.getPackageName())) {
+				continue;
+			}
+			am.killBackgroundProcesses(info.processName);
+		}
+		
 	}
 
 }

@@ -6,10 +6,13 @@ import java.util.List;
 
 import com.milan.inzaghi09.R;
 import com.milan.inzaghi09.db.domain.ProgressInfo;
-import com.milan.inzaghi09.engine.ProgressInfoLibrary;
+import com.milan.inzaghi09.engine.ProcessInfoProvider;
+import com.milan.inzaghi09.utils.ConstantValues;
+import com.milan.inzaghi09.utils.SpUtil;
 import com.milan.inzaghi09.utils.ToastUtil;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
@@ -66,7 +69,11 @@ public class ProgressManagementActivity extends Activity implements OnClickListe
 
 		@Override
 		public int getCount() {
-			return customerprogressInfoList.size() + systemprogressInfoList.size() + 2;
+			if (SpUtil.getBoolean(getApplicationContext(),  ConstantValues.IS_SHOW_SYSTEM_PROCESS, false)) {
+				return customerprogressInfoList.size() + systemprogressInfoList.size() + 2;
+			} else {
+				return customerprogressInfoList.size() + 1;
+			}
 		}
 
 		@Override
@@ -201,8 +208,24 @@ public class ProgressManagementActivity extends Activity implements OnClickListe
 			clear();
 			break;
 		case R.id.bt_setting:
-			
+			setting();
 			break;
+		}
+	}
+
+	/**
+	 * 实现设置按钮功能
+	 */
+	private void setting() {
+//		startActivity(new Intent(this, ProcessSettingActivity.class));
+		startActivityForResult(new Intent(this, ProcessSettingActivity.class), 0);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (mAdapter!=null) {
+			mAdapter.notifyDataSetChanged();
 		}
 	}
 
@@ -246,7 +269,7 @@ public class ProgressManagementActivity extends Activity implements OnClickListe
 					systemprogressInfoList.remove(progressInfo);
 				}
 				// 杀死进程
-				ProgressInfoLibrary.killProgress(getApplicationContext(),
+				ProcessInfoProvider.killProgress(getApplicationContext(),
 						progressInfo);
 				totalReleaseSize += progressInfo.memSize;
 				mAvailSpace += progressInfo.memSize;
@@ -378,7 +401,7 @@ public class ProgressManagementActivity extends Activity implements OnClickListe
 	private void getData() {
 		new Thread() {
 			public void run() {
-				List<ProgressInfo> progressInfoList = ProgressInfoLibrary.getProgressInfo(getApplicationContext());
+				List<ProgressInfo> progressInfoList = ProcessInfoProvider.getProgressInfo(getApplicationContext());
 				systemprogressInfoList = new ArrayList<ProgressInfo>();
 				customerprogressInfoList = new ArrayList<ProgressInfo>();
 				for (ProgressInfo progressInfo : progressInfoList) {
@@ -403,13 +426,13 @@ public class ProgressManagementActivity extends Activity implements OnClickListe
 		tv_total_progress = (TextView) findViewById(R.id.tv_total_progress);
 		tv_memory_state = (TextView) findViewById(R.id.tv_memory_state);
 		
-		mProgressCount = ProgressInfoLibrary.getCount(this);
+		mProgressCount = ProcessInfoProvider.getCount(this);
 		
-		mAvailSpace = ProgressInfoLibrary.getAvailSpace(this);
+		mAvailSpace = ProcessInfoProvider.getAvailSpace(this);
 		
 		String availSpace_str = Formatter.formatFileSize(this, mAvailSpace);
 		
-		totalSpace_str = Formatter.formatFileSize(this, ProgressInfoLibrary.getTotalSpace(this));
+		totalSpace_str = Formatter.formatFileSize(this, ProcessInfoProvider.getTotalSpace(this));
 		tv_total_progress.setText("进程总数:"+mProgressCount);
 		tv_memory_state.setText("剩余/总共:"+availSpace_str+"/"+totalSpace_str);
 	}

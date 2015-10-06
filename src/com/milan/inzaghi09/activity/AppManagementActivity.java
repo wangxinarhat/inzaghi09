@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.milan.inzaghi09.R;
 import com.milan.inzaghi09.db.domain.AppInfo;
-import com.milan.inzaghi09.engine.AppInfoLibrary;
+import com.milan.inzaghi09.engine.AppInfoProvider;
 import com.milan.inzaghi09.utils.ToastUtil;
 
 import android.R.color;
@@ -363,7 +363,7 @@ public class AppManagementActivity extends Activity implements OnClickListener {
 		new Thread() {
 			public void run() {
 
-				appInfoList = AppInfoLibrary.getAppInfoList(getApplicationContext());
+				appInfoList = AppInfoProvider.getAppInfoList(getApplicationContext());
 				//将集合根据是否系统应用拆分
 				systemAppInfoList = new ArrayList<AppInfo>();
 				customerAppInfoList = new ArrayList<AppInfo>();
