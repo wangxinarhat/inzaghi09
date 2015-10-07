@@ -87,6 +87,10 @@
         </activity>
         <activity android:name="com.milan.inzaghi09.activity.CommonNumberQueryActivity" >
         </activity>
+        <activity android:name="com.milan.inzaghi09.activity.AppLockActivity" >
+        </activity>
+        <activity android:name="com.milan.inzaghi09.activity.EnterPsdActivity" >
+        </activity>
 
         <receiver android:name="com.milan.inzaghi09.receiver.BootReceiver" >
             <intent-filter>
@@ -138,6 +142,8 @@
         <service android:name="com.milan.inzaghi09.service.LockScreenClearService" >
         </service>
         <service android:name="com.milan.inzaghi09.service.UpdateWidgetService" >
+        </service>
+        <service android:name="com.milan.inzaghi09.service.AppLockService" >
         </service>
 
        

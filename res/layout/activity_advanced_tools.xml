@@ -28,5 +28,16 @@
         android:gravity="center"
         android:background="@drawable/advanced_tools_item"
         />
+    <TextView 
+        android:id="@+id/tv_app_lock"
+        android:padding="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:drawableLeft="@android:drawable/star_on"
+        android:text="程序锁"
+        android:gravity="center"
+        android:background="@drawable/advanced_tools_item"
+        />
 
 </LinearLayout>

@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import com.milan.inzaghi09.R;
 import com.milan.inzaghi09.R.id;
 import com.milan.inzaghi09.service.AddressService;
+import com.milan.inzaghi09.service.AppLockService;
 import com.milan.inzaghi09.service.BlacklistService;
 import com.milan.inzaghi09.utils.ConstantValues;
 import com.milan.inzaghi09.utils.ServiceUtil;
@@ -38,6 +39,33 @@ public class SettingActivity extends Activity {
 		initToastStyle();
 		initToastLocation();
 		initBlacklist();
+		initAppLock();
+	}
+
+	/**
+	 * 程序锁设置
+	 */
+	private void initAppLock() {
+//		1找控件
+		final SettingItemView siv_app_lock = (SettingItemView) findViewById(R.id.siv_blacklist);
+//		2获取黑名单拦截是否开启的状态,回显
+		boolean isRunning = ServiceUtil.isrunning(this, "com.milan.inzaghi09.service.AppLockService");
+		siv_app_lock.setcheck(isRunning);
+//		3设置点击事件
+		siv_app_lock.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				4点击切换选中状态,
+				boolean ischeck = siv_app_lock.ischecked();
+				siv_app_lock.setcheck(!ischeck);
+//				5是否开启服务
+				if (!ischeck) {
+					startService(new Intent(getApplicationContext(), AppLockService.class));
+				} else {
+					stopService(new Intent(getApplicationContext(), AppLockService.class));
+				}
+			}
+		});
 	}
 
 	/**

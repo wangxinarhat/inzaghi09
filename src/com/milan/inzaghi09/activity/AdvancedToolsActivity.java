@@ -17,7 +17,24 @@ public class AdvancedToolsActivity extends Activity {
 		//按模块划分
 		initAddress();
 		initCommonNumberQuery();
+		initAppLock();
 		
+	}
+
+	/**
+	 * 实现程序锁功能
+	 */
+	private void initAppLock() {
+//		1找控件
+		TextView tv_app_lock = (TextView) findViewById(R.id.tv_app_lock);
+//		2设置点击事件
+		tv_app_lock.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(getApplicationContext(), AppLockActivity.class));
+			}
+		});
 	}
 
 	/**

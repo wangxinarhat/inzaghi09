@@ -50,5 +50,15 @@
         inzaghi09:desoff = "黑名单拦截已关闭"
         >
         </com.milan.inzaghi09.view.SettingItemView>
+    <com.milan.inzaghi09.view.SettingItemView
+        android:id="@+id/siv_app_lock"
+        xmlns:inzaghi09="http://schemas.android.com/apk/res/com.milan.inzaghi09"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        inzaghi09:destitle = "程序锁设置"
+        inzaghi09:deson = "程序锁已开启"
+        inzaghi09:desoff = "程序锁已关闭"
+        >
+        </com.milan.inzaghi09.view.SettingItemView>
 
 </LinearLayout>
