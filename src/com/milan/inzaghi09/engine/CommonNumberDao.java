@@ -44,9 +44,10 @@ public class CommonNumberDao {
 	 * @return 返回封装了Child的集合
 	 */
 	public List<Child> getChild(String idx) {
-//		数据库操作对象要重新获取，因为在getGroup方法中关闭了数据库，如果复用会导致异常
-		SQLiteDatabase  db = SQLiteDatabase.openDatabase(path, null,SQLiteDatabase.OPEN_READONLY);
-		// 1查询
+		// 1数据库操作对象要重新获取，因为在getGroup方法中关闭了数据库，如果复用会导致异常
+		SQLiteDatabase db = SQLiteDatabase.openDatabase(path, null,
+				SQLiteDatabase.OPEN_READONLY);
+		// 2查询
 		List<Child> childList = new ArrayList<Child>();
 		Cursor cusor = db.query("table"+idx, new String[]{"_id","number","name"}, null, null, null, null, null);
 		while (cusor.moveToNext()) {
