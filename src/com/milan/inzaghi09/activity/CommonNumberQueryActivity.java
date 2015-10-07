@@ -34,12 +34,15 @@ public class CommonNumberQueryActivity extends Activity {
 	 * 给ExpandableListView控件准备展示用的数据
 	 */
 	private void initData() {
+		// 1创建数据库操作对象
 		CommonNumberDao dao = new CommonNumberDao();
+		// 2查询Group数据集合
 		mGroupList = dao.getGroup(this);
-		
+		// 3构建数据适配器
 		MyAdapter mAdapter = new MyAdapter();
+		// 4设置数据适配器
 		elv_common_number.setAdapter(mAdapter);
-		//设置子条目点击事件
+		// 5设置子条目点击事件
 		elv_common_number.setOnChildClickListener(new OnChildClickListener() {
 			
 			@Override
