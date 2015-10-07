@@ -18,10 +18,10 @@ public class CommonNumberDao {
 	 * @return 返回封装了Group的集合
 	 */
 	public List<Group> getGroup(Context ctx) {
-		// 1获取数据库操作对象
 		
 		path = ctx.getFilesDir() + File.separator + "commonnum.db";
 
+		// 1获取数据库操作对象
 		SQLiteDatabase  db = SQLiteDatabase.openDatabase(path, null,SQLiteDatabase.OPEN_READONLY);
 		// 2查询
 		List<Group> groupList = new ArrayList<Group>();
@@ -44,6 +44,7 @@ public class CommonNumberDao {
 	 * @return 返回封装了Child的集合
 	 */
 	public List<Child> getChild(String idx) {
+//		数据库操作对象要重新获取，因为在getGroup方法中关闭了数据库，如果复用会导致异常
 		SQLiteDatabase  db = SQLiteDatabase.openDatabase(path, null,SQLiteDatabase.OPEN_READONLY);
 		// 1查询
 		List<Child> childList = new ArrayList<Child>();
