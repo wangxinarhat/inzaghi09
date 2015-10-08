@@ -31,10 +31,6 @@ public class ConstantValues {
 	 */
 	public static final String SECURITY_SET_STATE = "security_set_state";
 
-	/**
-	 * 存储是否显示来电归属地的key
-	 */
-	public static final String SHOW_PHONE_ADDRESS = "show_phone_address";
 
 	/**
 	 * 存储归属地样式索引值的key

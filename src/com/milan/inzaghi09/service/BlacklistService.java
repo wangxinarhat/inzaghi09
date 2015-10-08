@@ -109,13 +109,11 @@ public class BlacklistService extends Service {
 	public void endCall(String incomingNumber) {
 		int mode = mDao.getMode(incomingNumber);
 		if (mode == 2 || mode == 3) {
-			Class<?> clazz;
 			try {
-				// ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE));
-				clazz = Class.forName("android.os.ServiceManager");
+//				 ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE));
+				Class<?> clazz = Class.forName("android.os.ServiceManager");
 				Method method = clazz.getMethod("getService", String.class);
-				IBinder iBinder = (IBinder) method.invoke(null,
-						Context.TELEPHONY_SERVICE);
+				IBinder iBinder = (IBinder) method.invoke(null,Context.TELEPHONY_SERVICE);
 
 				ITelephony iTelephony = ITelephony.Stub.asInterface(iBinder);
 				iTelephony.endCall();

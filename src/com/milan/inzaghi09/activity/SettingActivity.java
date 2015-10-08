@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.milan.inzaghi09.R;
-import com.milan.inzaghi09.R.id;
 import com.milan.inzaghi09.service.AddressService;
 import com.milan.inzaghi09.service.AppLockService;
 import com.milan.inzaghi09.service.BlacklistService;
@@ -47,7 +46,7 @@ public class SettingActivity extends Activity {
 	 */
 	private void initAppLock() {
 //		1找控件
-		final SettingItemView siv_app_lock = (SettingItemView) findViewById(R.id.siv_blacklist);
+		final SettingItemView siv_app_lock = (SettingItemView) findViewById(R.id.siv_app_lock);
 //		2获取黑名单拦截是否开启的状态,回显
 		boolean isRunning = ServiceUtil.isrunning(this, "com.milan.inzaghi09.service.AppLockService");
 		siv_app_lock.setcheck(isRunning);
@@ -198,7 +197,6 @@ public class SettingActivity extends Activity {
 				boolean ischeck = siv_show_phone_address.ischecked();
 //				3.2状态取反,保存选择状态
 				siv_show_phone_address.setcheck(!ischeck);
-				SpUtil.putBoolean(getApplicationContext(), ConstantValues.SHOW_PHONE_ADDRESS, !ischeck);
 //				3.3根据选中状态选择是否开启服务，管理吐司显示
 				if (!ischeck) {
 					startService(new Intent(getApplicationContext(), AddressService.class));

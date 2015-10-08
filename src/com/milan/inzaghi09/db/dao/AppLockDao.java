@@ -74,7 +74,7 @@ public class AppLockDao {
 	/**
 	 * 查询所有已加锁应用，将包名的集合返回
 	 * 
-	 * @return 返回已加锁应用包名集合，返回null表示没有查到
+	 * @return 返回已加锁应用包名集合
 	 */
 	public List<String> queryAll() {
 		// 1获取数据库操作对象
