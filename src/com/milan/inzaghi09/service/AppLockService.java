@@ -34,10 +34,10 @@ public class AppLockService extends Service {
 	private void watch() {
 		
 		new Thread() {
-			AppLockDao appLockDao = AppLockDao.getInstance(getApplicationContext());
-			List<String> lockAppList = appLockDao.queryAll();
 			public void run() {
 				// 1获取加锁应用包名
+				AppLockDao appLockDao = AppLockDao.getInstance(getApplicationContext());
+				List<String> lockAppList = appLockDao.queryAll();
 				while (mIswatch) {
 					// 2获取正在开启应用的包名
 					// 2.1获取ActivityManager
