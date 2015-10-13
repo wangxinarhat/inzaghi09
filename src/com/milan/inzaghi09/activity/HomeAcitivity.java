@@ -71,7 +71,6 @@ public class HomeAcitivity extends Activity {
 				case 0:
 					// 开启对话框
 					showDialog();
-
 					break;
 				case 1:
 					// 通信卫士
@@ -84,6 +83,17 @@ public class HomeAcitivity extends Activity {
 				case 3:
 					// 进程管理
 					startActivity(new Intent(getApplicationContext(), ProgressManagementActivity.class));
+					break;
+				case 4:
+					// 流量统计
+					break;
+				case 5:
+					// 手机杀毒
+					startActivity(new Intent(getApplicationContext(),AntiVirusActivity.class));
+					break;
+				case 6:
+					// 手机杀毒
+					startActivity(new Intent(getApplicationContext(),CacheClearActivity.class));
 					break;
 				case 7:
 					//高级工具

@@ -9,18 +9,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class CommonNumberDao {
+	public CommonNumberDao(Context context){
+		this.context = context;
+	}
+	private Context context;
 	
-	
-	private String path;
+	private String path = context.getFilesDir() + File.separator + "commonnum.db";
 	/**
 	 * 查询常用号码的Group
 	 * @param ctx 上下文
 	 * @return 返回封装了Group的集合
 	 */
 	public List<Group> getGroup(Context ctx) {
-		
-		path = ctx.getFilesDir() + File.separator + "commonnum.db";
-
 		// 1获取数据库操作对象
 		SQLiteDatabase  db = SQLiteDatabase.openDatabase(path, null,SQLiteDatabase.OPEN_READONLY);
 		// 2查询

@@ -35,7 +35,7 @@ public class CommonNumberQueryActivity extends Activity {
 	 */
 	private void initData() {
 		// 1创建数据库操作对象
-		CommonNumberDao dao = new CommonNumberDao();
+		CommonNumberDao dao = new CommonNumberDao(this);
 		// 2查询Group数据集合
 		mGroupList = dao.getGroup(this);
 		// 3构建数据适配器

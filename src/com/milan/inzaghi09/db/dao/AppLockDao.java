@@ -7,13 +7,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 import com.milan.inzaghi09.db.AppLockOpenHelper;
 
 public class AppLockDao {
 	private AppLockOpenHelper appLockOpenHelper;
 	private static AppLockDao appLockDao = null;
-
+	private Context context;
 	/**
 	 * 构造方法，实例化数据库帮助类对象
 	 * 
@@ -22,6 +23,7 @@ public class AppLockDao {
 	 */
 	// 1私有构造
 	private AppLockDao(Context context) {
+		this.context = context;
 		// 创建数据库及其表结构
 		appLockOpenHelper = new AppLockOpenHelper(context);
 	}
@@ -55,6 +57,7 @@ public class AppLockDao {
 		contentValues.put("packagename", packagename);
 		db.insert("applocklist", null, contentValues);
 		db.close();
+		context.getContentResolver().notifyChange(Uri.parse("content://applock/change"), null);
 	}
 
 	/**
@@ -69,6 +72,7 @@ public class AppLockDao {
 		// 2删
 		db.delete("applocklist", "packagename=?", new String[] { packagename });
 		db.close();
+		context.getContentResolver().notifyChange(Uri.parse("content://applock/change"), null);
 	}
 
 	/**

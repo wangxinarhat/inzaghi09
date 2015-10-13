@@ -104,6 +104,7 @@ public class SplashActivity extends Activity {
 		// 4初始化数据库
 		initDB("address.db");
 		initDB("commonnum.db");
+		initDB("antivirus.db");
 		
 //		5生成桌面快捷方式
 		if (!SpUtil.getBoolean(this, ConstantValues.SHORTCUT_EXIST, false)) {
@@ -409,7 +410,6 @@ public class SplashActivity extends Activity {
 						try {
 							Thread.sleep(4000 - (endTime - startTime));
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
