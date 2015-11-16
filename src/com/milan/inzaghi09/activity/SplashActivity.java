@@ -23,6 +23,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -88,6 +89,8 @@ public class SplashActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//TODO
+		Debug.startMethodTracing("Entertainment");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
@@ -225,6 +228,8 @@ public class SplashActivity extends Activity {
 	 * 跳转到主界面
 	 */
 	protected void enterHome() {
+		//TODO
+		Debug.stopMethodTracing();
 		// 跳转到主界面的意图对象
 		Intent intent = new Intent(mContext, HomeAcitivity.class);
 		startActivity(intent);
